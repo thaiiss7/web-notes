@@ -1,0 +1,92 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.navBar{
+    width: 100%;
+    height: 150px;
+    background-color: thistle;
+    position: fixed;
+    align-content: flex-start;
+}
+
+.logo{
+    width: 250px;
+    height: 150px;
+}
+
+.inferior{
+    display: flex;
+    flex-direction: row;
+}
+
+.superior{
+    display: flex;
+    flex-direction: row;
+}
+
+.superiorD{
+    height: 50vh;
+    width: 50vw;
+    display: flex;
+    align-content: center;
+}
+
+.superiorE{
+    height: 50vh;
+    width: 50vw;
+    display: flex;
+    align-content: center;
+}
+
+.inferiorD{
+    height: 50vh;
+    width: 50vw;
+    display: flex;
+    align-content: center;
+}
+
+.inferiorE{
+    height: 50vh;
+    width: 50vw;
+    display: flex;
+    align-content: center;
+}
+
+.imagemS{
+    width: 500px;
+    height: 250px;
+    margin-top: 190px;
+    margin-left: 80px;
+}
+
+.textoS{
+    width: 500px;
+    height: 250px;
+    margin-top: 190px;
+    margin-right: 80px;
+}
+
+.imagemI{
+    width: 500px;
+    height: 250px;
+    margin-top: 190px;
+    margin-left: 80px;
+}
+
+.footBar{
+    width: 100%;
+    height: 100px;
+    background-color: thistle;
+    position: absolute;
+    bottom: 0;
+    align-content: flex-end;
+}
