@@ -2,7 +2,10 @@
 // console.log(title)
 
 const switchColor = () => {
+    let color = document.getElementById('corzinha').value
     let quadrado = document.getElementById('quadrado')
+
+    quadrado.style.backgroundColor = color
     
     // if (quadrado.classList.contains('ok')) {
     //     quadrado.classList.remove('ok');
@@ -13,6 +16,6 @@ const switchColor = () => {
     //     quadrado.classList.add('ok');
     // }
 
-    quadrado.classList.remove('ok')
-    quadrado.classList.add('corzinha')
+    // quadrado.classList.remove('ok')
+    // quadrado.classList.add('corzinha')
 }
