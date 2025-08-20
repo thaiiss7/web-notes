@@ -1,33 +1,18 @@
-//SINTAXE
-let variavel1 = 5 //escopo local -> de função
-var variavel2 = 10 //escopo global
-const variavel3 = 15 //valor que não pode ser alterado (como define em C)
+// let title = document.getElementById('el1').innerHTML
+// console.log(title)
 
-//objeto
-let pessoa = {
-    nome: "thaiis",
-    idade: 18
+const switchColor = () => {
+    let quadrado = document.getElementById('quadrado')
+    
+    // if (quadrado.classList.contains('ok')) {
+    //     quadrado.classList.remove('ok');
+    //     quadrado.classList.add('notOk');
+    // }
+    // else{
+    //     quadrado.classList.remove('notOk');
+    //     quadrado.classList.add('ok');
+    // }
+
+    quadrado.classList.remove('ok')
+    quadrado.classList.add('corzinha')
 }
-
-//FUNÇÕES
-
-//função tradicional
-function soma(a, b)
-{
-    return a + b;
-}
-//função anônima
-const mult = function (a, b) {
-    return a * b;
-}
-
-//arrow function
-const sub = (a, b) => a - b;
-
-//MÉTODOS DE ARRAY
-.map() //transforma os itens da array
-.filter() //filtra
-.find() //retorna o primeiro elemento que satifaz o condição
-.findIndex() //retorna o primeiro index que satifaz o condição
-.indexOf() //retorna o index do elemento
-.reduce() // reduz o array a um único valor

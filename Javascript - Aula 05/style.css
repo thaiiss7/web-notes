@@ -1,0 +1,26 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.quadrado{
+    height: 300px;
+    width: 300px;
+}
+
+.ok{
+    background-color: powderblue;
+}
+
+.notOk{
+    background-color: rgb(209, 114, 114);
+}
+
+.corzinha{
+    background-color: input;
+}
+
+.button{
+    padding: 10px;
+}
