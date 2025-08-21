@@ -1,5 +1,5 @@
 const submit = () => {
-    let input = document.getElementById('texto').value
+    let input = document.getElementById('input').value
     let tarefa = document.getElementById('tarefa')
     let itens = document.createElement('div')
     itens.className = 'itens'
@@ -11,5 +11,5 @@ const submit = () => {
 }
 
 const cross = () => {
-
+    let texto = document.getElementById('texto')
 }
