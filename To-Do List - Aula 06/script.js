@@ -4,7 +4,7 @@ const submit = () => {
     let itens = document.createElement('div')
     itens.className = 'itens'
 
-    itens.innerHTML = `<p onclick="cross()">${input}</p>
+    itens.innerHTML = `<p onclick="cross()" id="">${input}</p>
     <input type="button" value="x">`
 
     tarefa.appendChild(itens)
