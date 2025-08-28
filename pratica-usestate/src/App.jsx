@@ -30,8 +30,8 @@ function App() {
       </p> */}
 
       <div className='body'>
-        <button></button>
-        <h1>achouu!</h1>
+        <button onClick></button>
+        <h1 className="none">achouu!</h1>
       </div>
     </>
   )

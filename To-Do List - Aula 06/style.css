@@ -71,10 +71,18 @@ button {
     width: 100%;
 }
 
-p{
+.texto{
     width: 70%;
     align-self: center;
     padding: 10px;
+    text-decoration: none;
+}
+
+.riscado {
+    width: 70%;
+    align-self: center;
+    padding: 10px;
+    text-decoration: line-through;
 }
 
 input[type=button]{
