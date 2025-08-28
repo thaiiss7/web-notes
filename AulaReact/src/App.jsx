@@ -9,13 +9,22 @@ import { Square } from './components/Square'
 
 const App = () => {
 
+  const [count, setCount] = useState(0)
+  const [texto, setTexto] = useState("")
+
   return (
     <>
     <div className='body'>
-      <YellowSquare />
+      {/* <YellowSquare />
       <PurpleSquare />
       <BlueSquare />
-      <Square classe="purple" />
+      <Square classe="purple" /> */}
+
+        <button onClick={() => setCount((count) => count + 2)}>
+          count is {count}
+        </button>
+        <input type="text" onChange={(e) => setTexto(e.target.value)} />
+        <h1>{texto}</h1>
     </div>
     </>
   )
