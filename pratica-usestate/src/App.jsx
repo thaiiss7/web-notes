@@ -4,34 +4,45 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  const [visibility, setVisibility] = useState(true)
+  const [color, setColor] = useState("rgb(226, 123, 123)")
   const [count, setCount] = useState(0)
+  const [decCount, setDecCount] = useState(0)
+
+  const IncrementDec = () => {
+    setCount(count => count + 1)
+    if (count % 10 === 0){
+      setDecCount(decCount => decCount+1)
+    }
+  }
 
   return (
     <>
-      {/* <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
-
       <div className='body'>
-        <button onClick></button>
-        <h1 className="none">achouu!</h1>
+
+        { visibility &&
+          <div>
+            <h1 className="none">achouu!</h1>
+          </div>
+        }
+
+        <button onClick={() => {setVisibility(visibility == true ? false : true)}}>
+          Alterar visibilidade
+        </button>
+        
+        <div style={{backgroundColor : color}} className='square'></div>
+
+        <button onClick={() => {setColor(color == "rgb(226, 123, 123)" ? "rgb(182, 125, 236)" : "rgb(226, 123, 123)")}}>
+          Alterar cor
+        </button>
+
+        <div className='counter'>
+          <p>contagem: {decCount}</p>
+        </div>
+        <button onClick={IncrementDec}>
+          Clique para aumentar a contagem
+        </button>
+
       </div>
     </>
   )
