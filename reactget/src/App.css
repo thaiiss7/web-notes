@@ -1,0 +1,31 @@
+body{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(210, 228, 255);
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+
+}
+
+img{
+  height: 500px;
+  width: 700px;
+}
+
+button {
+  height: 50px;
+  width: 150px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:x-large;
+}
