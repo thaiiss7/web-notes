@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     console.log("testando aqui uai")
-  }, [text])
+  }, [text]) //toda vez que o valor de text mudar o useeffect dispara
 
   return (
     <>
