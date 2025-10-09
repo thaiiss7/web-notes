@@ -1,6 +1,17 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
+// props são propriedades como parâmetros
+function Profile({nome, sobrenome, idade}){
+  return (
+    <>
+    <h1>nome: {nome}</h1>
+    <h1>sobrenome: {sobrenome}</h1>
+    <h1>idade: {idade}</h1>
+    </>
+  )
+}
+
 function App() {
   const [value, setValue] = useState(0)
   const [text, setText] = useState("")
@@ -21,7 +32,6 @@ function App() {
 
       <input type="text" onChange={ (e) => setText(e.target.value) }/>
       <h1>{text}</h1>
-
       <br />
 
       <button onClick={() => setShow(!show)}>clica vai</button> {/*altera a visibilidade mudando o valor da variável */}
@@ -32,6 +42,14 @@ function App() {
       <br />
       {/* com ternário */}
       { show ? <div style={{backgroundColor: 'blue', width: '200px', height: '200px'}}>esquisito</div> : ""}
+
+      <br />
+      <Profile nome={"Thaís"} sobrenome={"Michel"} idade={"18"} />
+      <br />
+      <Profile nome={"Helo"} sobrenome={"FazChinelo"} idade={"17"} />
+      <br />
+      <Profile nome={"Beca"} sobrenome={"Ianz"} idade={"18"} />
+
     </>
   )
 }
