@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { Botao } from './components/Botao'
+import { BotaoTW } from './components/BotaoTW'
 
 // props são propriedades como parâmetros
 function Profile({nome, sobrenome, idade}){
@@ -50,6 +52,11 @@ function App() {
       <br />
       <Profile nome={"Beca"} sobrenome={"Ianz"} idade={"18"} />
 
+      <Botao cor={'green'} conteudo={'login'} altura={'50px'} largura={'200px'} borda={'5px'}/>
+      <Botao cor={'pink'} conteudo={'helo linda'} altura={'50px'} largura={'200px'} borda={'5px'}/>
+      <br />
+      <br />
+      <BotaoTW cor="bg-blue-300" conteudo="tailwiiind" altura="h-24" largura="w-24" hover="hover:bg-purple-400"/>  
     </>
   )
 }
