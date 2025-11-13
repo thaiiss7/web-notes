@@ -1,14 +1,17 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { Alert, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { View, Text } from 'react-native';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { app } from '../firebaseConfig';
+import { useState, useEffect } from 'react';
 
 // export default function HomeScreen() {
+
+//   const[email, setEmail] = useState("");
+//   const[password, setPassword] = useState("");
+
+//   const auth = getAuth(app)
+
 //   return (
 //     <View style={styles.body}>
 //       <View style={styles.nav_bar}>
@@ -19,8 +22,8 @@ import { View, Text } from 'react-native';
 //       <View style={styles.title_container}>
 //         <Text style={styles.title}>Welcome!</Text>
 //       </View>
-//       <TextInput style={styles.input_box} placeholder='Email:'></TextInput>
-//       <TextInput style={styles.input_box} secureTextEntry={true} placeholder='Password:'></TextInput>
+//       <TextInput style={styles.input_box} onChangeText={(value) => setEmail(value)} placeholder='Email:'></TextInput>
+//       <TextInput style={styles.input_box} secureTextEntry={true} onChangeText={(value) => setPassword(value)} placeholder='Password:'></TextInput>
 //       <TouchableOpacity style={styles.login_box}>
 //         <View>
 //           <Text>Login</Text>
@@ -135,6 +138,25 @@ import { View, Text } from 'react-native';
 
 
 export default function HomeScreen() {
+
+  const[email, setEmail] = useState("");
+  const[password, setPassword] = useState("");
+  const[confirmPassword, setConfirmPassword] = useState("");
+    
+  const auth = getAuth(app)
+
+  const singUp = () => {
+    if (password === confirmPassword){
+      return createUserWithEmailAndPassword(auth, email, password)
+    } else {
+      return alert("Erro!")
+    }
+  }
+
+  useEffect(() => {
+    console.log(email, password, confirmPassword)
+  }, [email, password, confirmPassword])
+
   return (
     <View style={styles.body}>
       <View style={styles.nav_bar}>
@@ -145,12 +167,12 @@ export default function HomeScreen() {
       <View style={styles.title_container}>
         <Text style={styles.title}>Welcome!</Text>
       </View>
-      <TextInput style={styles.input_box} placeholder='Email:'></TextInput>
-      <TextInput style={styles.input_box} secureTextEntry={true} placeholder='Password:'></TextInput>
-      <TextInput style={styles.input_box} secureTextEntry={true} placeholder='Repeat password:'></TextInput>
-      <TouchableOpacity style={styles.login_box}>
+      <TextInput style={styles.input_box} onChangeText={(value) => setEmail(value)} placeholder='Email:'></TextInput>
+      <TextInput style={styles.input_box} secureTextEntry={true} onChangeText={(value) => setPassword(value)} placeholder='Password:'></TextInput>
+      <TextInput style={styles.input_box} secureTextEntry={true} onChangeText={(value) => setConfirmPassword(value)} placeholder='Repeat password:'></TextInput>
+      <TouchableOpacity style={styles.login_box} onPress={() => singUp()}>
         <View>
-          <Text>Sign-In</Text>
+          <Text>Sign-Up</Text>
         </View>
       </TouchableOpacity>
         <View style={styles.contact_bar}>
