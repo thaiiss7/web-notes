@@ -1,66 +1,22 @@
 import { Image } from 'expo-image';
 import { Alert, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { View, Text } from 'react-native';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { app } from '../firebaseConfig';
 import { useState, useEffect } from 'react';
-import { Link, router } from 'expo-router';
-import Swal from 'sweetalert2';
+import { Link, router } from 'expo-router'
 
 export default function HomeScreen() {
 
   const[email, setEmail] = useState("");
   const[password, setPassword] = useState("");
-  const[confirmPassword, setConfirmPassword] = useState("");
-    
+
   const auth = getAuth(app)
 
-  const minPassword = 6
-
-  const singUp = async () => {
-    // if (password === confirmPassword){
-    //   return createUserWithEmailAndPassword(auth, email, password)
-    // } else {
-    //   return alert("Erro!")
-    // }
-
-    if (password.length >= minPassword) {
-      if(password === confirmPassword) {
-        try {
-          await createUserWithEmailAndPassword(auth, email, password)
-          Swal.fire({
-          icon: "success",
-          title: "Success",
-          text: "User signed-up!",
-          });
-          return router.navigate('/login')
-        }
-        catch(e) {
-          return Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "This email is already being used",
-        });
-        }
-      } else {
-        return Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "Password does not match",
-        });
-      }
-    } else {
-      return Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "Password must have at lest 6 caracters",
-        });
-    }
+  const signIn = async () => {
+    await signInWithEmailAndPassword(auth, email, password)
+    router.navigate('/home')
   }
-
-  useEffect(() => {
-    console.log(email, password, confirmPassword)
-  }, [email, password, confirmPassword])
 
   return (
     <View style={styles.body}>
@@ -74,21 +30,21 @@ export default function HomeScreen() {
       </View>
       <TextInput style={styles.input_box} onChangeText={(value) => setEmail(value)} placeholder='Email:'></TextInput>
       <TextInput style={styles.input_box} secureTextEntry={true} onChangeText={(value) => setPassword(value)} placeholder='Password:'></TextInput>
-      <TextInput style={styles.input_box} secureTextEntry={true} onChangeText={(value) => setConfirmPassword(value)} placeholder='Repeat password:'></TextInput>
-      <TouchableOpacity style={styles.login_box} onPress={() => singUp()}>
+      <TouchableOpacity style={styles.login_box} onPress={signIn}>
         <View>
-          <Text>Sign-Up</Text>
+          <Text>Login</Text>
         </View>
       </TouchableOpacity>
-        <View style={styles.contact_bar}>
-          <Image
-            style={styles.google}
-            source={require("../assets/images/google_logo.png")}/>
-          <Text style={styles.text}>  Google</Text>
-        </View>
+      <Text style={styles.text_link}>Forgot your password?</Text>
+      <View style={styles.contact_bar}>
+        <Image
+          style={styles.google}
+          source={require("../assets/images/google_logo.png")}/>
+        <Text style={styles.text}>  Google</Text>
+      </View>
       <View style={styles.bottom_bar}>
-        <Text style={styles.text}>Already have an account? </Text>
-        <Link href={'/login'} style={styles.signin_text}>Login</Link>
+        <Text style={styles.text}>Don't have an account? </Text>
+        <Link href={'..'} style={styles.signin_text}>Sing-In</Link>
       </View>
     </View>
   )
@@ -185,4 +141,3 @@ const styles = StyleSheet.create({
     color: "#2B6C8F"
   }
 })
-
