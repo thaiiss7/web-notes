@@ -5,6 +5,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { app } from '../firebaseConfig';
 import { useState, useEffect } from 'react';
 import { Link, router } from 'expo-router'
+import Swal from 'sweetalert2';
 
 export default function HomeScreen() {
 
@@ -14,9 +15,24 @@ export default function HomeScreen() {
   const auth = getAuth(app)
 
   const signIn = async () => {
-    await signInWithEmailAndPassword(auth, email, password)
-    router.navigate('/home')
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Login succeded!"
+      });
+      return router.navigate('/home')
+    }
+    catch(e) {
+      return Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Email or password is incorect!"
+      });
+    }
   }
+
 
   return (
     <View style={styles.body}>
@@ -30,7 +46,7 @@ export default function HomeScreen() {
       </View>
       <TextInput style={styles.input_box} onChangeText={(value) => setEmail(value)} placeholder='Email:'></TextInput>
       <TextInput style={styles.input_box} secureTextEntry={true} onChangeText={(value) => setPassword(value)} placeholder='Password:'></TextInput>
-      <TouchableOpacity style={styles.login_box} onPress={signIn}>
+      <TouchableOpacity style={styles.login_box} onPress={() => signIn()}>
         <View>
           <Text>Login</Text>
         </View>
