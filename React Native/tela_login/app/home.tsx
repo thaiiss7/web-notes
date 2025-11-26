@@ -27,13 +27,13 @@ export default function HomeScreen() {
 
   async function RegisterBook() {
     try {
-      const auth = getAuth()
-      const user = auth.currentUser
+      // const auth = getAuth()
+      // const user = auth.currentUser
 
-      if(!user) {
-        console.log("User not found")
-        return 
-      }
+      // if(!user) {
+      //   console.log("User not found")
+      //   return 
+      // }
 
       if (!title || !year || !author || !editor || !numOfPages || !genre || !sinopse || !language) {
         console.log("escreve ai")
@@ -50,7 +50,7 @@ export default function HomeScreen() {
         sinopse,
         language,
         cover: cover || null,
-        userId: user.uid,
+        // userId: user.uid,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp()
       };
@@ -97,12 +97,12 @@ export default function HomeScreen() {
       )} */}
 
         <TextInput style={styles.input_box} onChangeText={(value) => setAuthor(value)} placeholder='Author:'></TextInput>
-        <TextInput style={styles.input_box} onChangeText={(value) => setEditor} placeholder='Editor:'></TextInput>
-        <TextInput style={styles.input_box} onChangeText={(value) => setLanguage} placeholder='Language:'></TextInput>
-        <TextInput style={styles.input_box} onChangeText={(value) => setNumOfPages} placeholder='Number of pages:'></TextInput>
-        <TextInput style={styles.input_box} onChangeText={(value) => setGenre} placeholder='Genre:'></TextInput>
-        <TextInput style={styles.input_box} onChangeText={(value) => setCover} placeholder='Cover image (link):'></TextInput>
-        <TextInput style={styles.input_box} onChangeText={(value) => setSinopse} placeholder='Sinopse:'></TextInput>
+        <TextInput style={styles.input_box} onChangeText={(value) => setEditor(value)} placeholder='Editor:'></TextInput>
+        <TextInput style={styles.input_box} onChangeText={(value) => setLanguage(value)} placeholder='Language:'></TextInput>
+        <TextInput style={styles.input_box} onChangeText={(value) => setNumOfPages(value)} placeholder='Number of pages:'></TextInput>
+        <TextInput style={styles.input_box} onChangeText={(value) => setGenre(value)} placeholder='Genre:'></TextInput>
+        <TextInput style={styles.input_box} onChangeText={(value) => setCover(value)} placeholder='Cover image (link):'></TextInput>
+        <TextInput style={styles.input_box} onChangeText={(value) => setSinopse(value)} placeholder='Sinopse:'></TextInput>
         <TouchableOpacity style={styles.login_box} onPress={RegisterBook}>
         <View>
             <Text>Register</Text>
@@ -110,6 +110,7 @@ export default function HomeScreen() {
         </TouchableOpacity>
         <View style={styles.bottom_bar}>
             <Link href={'/login'} style={styles.signout_text}>Sign-Out</Link>
+            <Link href={'/list'} style={styles.signout_text}>List of books</Link>
         </View>
 
     </View>
@@ -181,21 +182,8 @@ const styles = StyleSheet.create({
     margin: 20
   },
 
-  contact_bar: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: "10%"
-  },
-
-  google: {
-    width: "10%",
-    height: "50%"
-  },
-
   bottom_bar: {
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
@@ -205,6 +193,7 @@ const styles = StyleSheet.create({
   signout_text: {
     fontFamily: "Georgia",
     fontSize: 17,
-    color: "#2B6C8F"
+    color: "#2B6C8F",
+    margin: 10
   }
 })
